@@ -116,11 +116,13 @@ The full table, with every model and strategy, is in [results/auc_table.md](resu
 4. **Training with damage helps AUC about as much, but leaves more false alarms** (30% for gradient boosting under B), because without a flag the model can't tell "logging failed" from "genuinely inactive." It also costs a little clean-data AUC under B (0.744 vs 0.747).
 5. **No strategy recovers fully.** At 30% damage under B or C, the best strategy still sits around 0.73, below the clean 0.747. Once the activity or score data is gone, it can't be rebuilt, and those students have to be predicted from their background alone.
 6. **What didn't help:** for logistic regression, indicators did little for AUC under damage C (0.701 → 0.702). They did lower its false alarms (15%), but mostly because median imputation gives the affected students an average-to-good score.
+7. **False alarms are unevenly spread, even on clean data.** Among 2014 students who went on to pass, gradient boosting flags **38.2%** of those in the most deprived band (`imd_band` 0–10%, n = 699), against **14.2%** in the least deprived (90–100%, n = 831). It flags 27.4% of students with a declared disability, against 24.0% without. Deprivation is a model input, but the gap also comes through the activity and assessment features. This matters for the main experiment: if logging failures are more common for some groups, for example students on older devices or with poorer connections, those students would get both a higher base rate of false alarms and the extra false alarms from missing logs. See [notebook 02](notebooks/02_baselines.ipynb).
 
 ## Limitations
 
 - The indicator strategy assumes the platform knows when it failed to log a student. Many don't.
-- Damage is simulated and independent of the outcome. Real logging failures may be linked to device, region or disability, which would make things worse, and possibly unfair.
+- Damage is simulated and independent of the outcome and of student background. Real logging failures may be linked to device, region or disability. Because false alarms already fall more heavily on students from deprived areas (finding 7), correlated failures would likely widen that gap. This wasn't tested.
+- The fairness check (finding 7) is descriptive only: false-alarm rates by group at one threshold. It doesn't separate how much of the gap reflects real differences in outcomes from how much is model bias, and no mitigation was tried.
 - Assessment scores for work submitted by day 28 are treated as known at day 28. In reality, tutor-marked scores can take a few days to come back, so this is a mild optimistic bias.
 - A single fixed threshold (0.5) is used throughout. Choosing a threshold by cost would change recall and false-alarm figures, though not AUC.
 - Default hyperparameters, with no tuning. The point is the comparison between strategies, not the best possible score.
