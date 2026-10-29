@@ -244,11 +244,7 @@ def write_outputs(clean, confusions, damage_df, leaky_auc=None):
     if leaky_auc is not None:
         (RESULTS / "leaky_demo.txt").write_text(f"HGB AUC with whole-course activity (leaky): {leaky_auc:.3f}\n")
 
-    _curve_figure(damage_df, "auc", "ROC-AUC (2014 test set)", ["A", "B", "C"],
-                  RESULTS / "auc_vs_missing.png")
-    _curve_figure(damage_df[damage_df["damage"].isin(["B", "C"])], "false_alarm_affected",
-                  "False-alarm rate among affected\nnot-at-risk students", ["B", "C"],
-                  RESULTS / "false_alarms.png", ylim=(0, 1))
+    make_figures(damage_df, clean)
     table = damage_table(damage_df)
     table.to_csv(RESULTS / "auc_table.csv", index=False)
     (RESULTS / "auc_table.md").write_text(to_markdown(table))
