@@ -1,0 +1,95 @@
+students: {'all_rows': 32593, 'unregistered_by_cutoff': 5055, 'registered_after_cutoff': 16, 'kept': 27522}
+                 split     model    auc  auc_lo  auc_hi  pr_auc  recall     f1
+0  time (2013 -> 2014)  baseline  0.500   0.500   0.500   0.439   0.000  0.000
+1  time (2013 -> 2014)    logreg  0.718   0.710   0.725   0.673   0.571  0.600
+2  time (2013 -> 2014)       hgb  0.747   0.739   0.755   0.704   0.601  0.629
+3         random 80/20  baseline  0.500   0.500   0.500   0.441   0.000  0.000
+4         random 80/20    logreg  0.732   0.719   0.745   0.689   0.662  0.640
+5         random 80/20       hgb  0.775   0.763   0.787   0.750   0.606  0.650
+leaky demo AUC: 0.949
+  A level=0% seed=0 done
+  A level=0% seed=1 done
+  A level=0% seed=2 done
+  A level=0% seed=3 done
+  A level=0% seed=4 done
+  A level=10% seed=0 done
+  A level=10% seed=1 done
+  A level=10% seed=2 done
+  A level=10% seed=3 done
+  A level=10% seed=4 done
+  A level=20% seed=0 done
+  A level=20% seed=1 done
+  A level=20% seed=2 done
+  A level=20% seed=3 done
+  A level=20% seed=4 done
+  A level=30% seed=0 done
+  A level=30% seed=1 done
+  A level=30% seed=2 done
+  A level=30% seed=3 done
+  A level=30% seed=4 done
+  A level=50% seed=0 done
+  A level=50% seed=1 done
+  A level=50% seed=2 done
+  A level=50% seed=3 done
+  A level=50% seed=4 done
+  B level=0% seed=0 done
+  B level=0% seed=1 done
+  B level=0% seed=2 done
+  B level=0% seed=3 done
+  B level=0% seed=4 done
+  B level=10% seed=0 done
+  B level=10% seed=1 done
+  B level=10% seed=2 done
+  B level=10% seed=3 done
+  B level=10% seed=4 done
+  B level=20% seed=0 done
+  B level=20% seed=1 done
+  B level=20% seed=2 done
+  B level=20% seed=3 done
+  B level=20% seed=4 done
+  B level=30% seed=0 done
+  B level=30% seed=1 done
+  B level=30% seed=2 done
+  B level=30% seed=3 done
+  B level=30% seed=4 done
+  C level=0% seed=0 done
+  C level=0% seed=1 done
+  C level=0% seed=2 done
+  C level=0% seed=3 done
+  C level=0% seed=4 done
+  C level=10% seed=0 done
+  C level=10% seed=1 done
+  C level=10% seed=2 done
+  C level=10% seed=3 done
+  C level=10% seed=4 done
+  C level=20% seed=0 done
+  C level=20% seed=1 done
+  C level=20% seed=2 done
+  C level=20% seed=3 done
+  C level=20% seed=4 done
+  C level=30% seed=0 done
+  C level=30% seed=1 done
+  C level=30% seed=2 done
+  C level=30% seed=3 done
+  C level=30% seed=4 done
+   damage                        strategy                model             AUC at 0%            AUC at 30% false alarms at 0% false alarms at 30% false alarms, affected students at 30%
+0       A          Naive (missing = zero)  Logistic regression  0.718 [0.710, 0.725]  0.718 [0.710, 0.726]              26.1%               27.3%                                      -
+1       A          Naive (missing = zero)    Gradient boosting  0.747 [0.739, 0.755]  0.743 [0.734, 0.750]              24.2%               26.9%                                      -
+2       A               Train with damage  Logistic regression  0.717 [0.709, 0.724]  0.718 [0.710, 0.726]              25.7%               26.9%                                      -
+3       A               Train with damage    Gradient boosting  0.746 [0.738, 0.754]  0.746 [0.738, 0.754]              24.1%               25.6%                                      -
+4       B          Naive (missing = zero)  Logistic regression  0.718 [0.710, 0.725]  0.680 [0.672, 0.688]              26.1%               45.2%                                  90.8%
+5       B          Naive (missing = zero)    Gradient boosting  0.747 [0.739, 0.755]  0.716 [0.708, 0.725]              24.2%               37.1%                                  67.9%
+6       B         Missing-data indicators  Logistic regression  0.718 [0.710, 0.725]  0.708 [0.699, 0.715]              26.1%               28.7%                                  34.5%
+7       B         Missing-data indicators    Gradient boosting  0.747 [0.739, 0.755]  0.728 [0.720, 0.736]              24.2%               23.9%                                  23.1%
+8       B               Train with damage  Logistic regression  0.714 [0.706, 0.721]  0.703 [0.695, 0.710]              26.1%               31.4%                                  44.3%
+9       B               Train with damage    Gradient boosting  0.744 [0.736, 0.752]  0.729 [0.721, 0.737]              24.4%               25.8%                                  30.1%
+10      B  Indicators + train with damage  Logistic regression  0.719 [0.711, 0.727]  0.709 [0.700, 0.716]              26.4%               30.0%                                  38.6%
+11      B  Indicators + train with damage    Gradient boosting  0.745 [0.737, 0.753]  0.730 [0.722, 0.738]              24.2%               24.9%                                  27.0%
+12      C          Naive (missing = zero)  Logistic regression  0.718 [0.710, 0.725]  0.701 [0.693, 0.708]              26.1%               35.0%                                  56.0%
+13      C          Naive (missing = zero)    Gradient boosting  0.747 [0.739, 0.755]  0.715 [0.707, 0.723]              24.2%               33.4%                                  55.3%
+14      C         Missing-data indicators  Logistic regression  0.718 [0.710, 0.725]  0.702 [0.694, 0.709]              26.1%               22.9%                                  15.0%
+15      C         Missing-data indicators    Gradient boosting  0.747 [0.739, 0.755]  0.728 [0.720, 0.736]              24.2%               25.3%                                  27.7%
+16      C               Train with damage  Logistic regression  0.723 [0.715, 0.730]  0.712 [0.704, 0.719]              25.9%               30.1%                                  40.5%
+17      C               Train with damage    Gradient boosting  0.751 [0.743, 0.758]  0.736 [0.728, 0.743]              24.4%               26.8%                                  32.8%
+18      C  Indicators + train with damage  Logistic regression  0.721 [0.713, 0.729]  0.710 [0.702, 0.717]              26.7%               26.3%                                  25.4%
+19      C  Indicators + train with damage    Gradient boosting  0.749 [0.741, 0.756]  0.735 [0.727, 0.742]              24.7%               24.0%                                  22.1%

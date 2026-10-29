@@ -1,0 +1,6 @@
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.6
+matplotlib>=3.8
+# only needed to run the notebooks
+jupyter

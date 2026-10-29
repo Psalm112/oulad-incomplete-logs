@@ -1,0 +1,8 @@
+# Dataset: download it yourself (see README). Do not commit it.
+data/*
+!data/README.md
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
